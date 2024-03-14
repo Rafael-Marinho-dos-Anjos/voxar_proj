@@ -4,7 +4,7 @@
 This software is a easy way to classify animal images in a entire folder, saving all predictions answers into a csv file.
 
 ## Setup
-- Clone project repository: `git clone https://github.com/seuusuario/lista-de-tarefas.git`
+- Clone project repository: `git clone https://github.com/Rafael-Marinho-dos-Anjos/voxar_proj.git`
 - Ensure that Python 3.9 programming language or a newer version is installed
 - Install all dependences listed in requirements.txt (to install dependences execute the command 'pip install -r requirements.txt' on command prompt).
 
