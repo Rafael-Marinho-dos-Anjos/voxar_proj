@@ -3,7 +3,7 @@
 
 import csv
 from typing import Dict
-from app.utils.imagenet_classes import classes
+from app.utils.imagenet_classes import superclasses
 
 
 def save_csv(classifications: Dict, destination: str) -> None:
@@ -14,7 +14,7 @@ def save_csv(classifications: Dict, destination: str) -> None:
     classification_list = [
         "{}; {}".format(
             im_name,
-            classes[class_id] if class_id < 400 else "Nenhum")
+            superclasses[class_id] if class_id < 400 else "Nenhum")
         for im_name, class_id in classifications.items()
         ]
     
