@@ -9,12 +9,13 @@ from app.controller.save_csv import save_csv
 
 
 class MainWindow(tk.Tk):
-    def __init__(self, screenName: str = "Voxar Project", baseName: str = None, className: str = "Tk", useTk: bool = True, sync: bool = False, use: str = None) -> None:
+    def __init__(self, screenName: str = None, baseName: str = None, className: str = "Tk", useTk: bool = True, sync: bool = False, use: str = None) -> None:
         super().__init__(screenName, baseName, className, useTk, sync, use)
         self.mutex = Lock()
 
         self.resizable(False, False)
         self.geometry("400x250")
+        self.title("Voxar Classification Project")
 
         self.create_widgets()
         self.place_widgets()
