@@ -2,7 +2,7 @@
 """
 
 from app.model.data.dataset import CustomDataset
-from app.model.wide_resnet.load_model import transforms
+from app.model.nn.load_model import transforms
 from torch.utils.data import DataLoader
 
 

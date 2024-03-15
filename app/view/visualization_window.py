@@ -6,7 +6,7 @@ from PIL import Image, ImageTk
 from torch import argmax
 
 from app.model.data.dataloader import get_dataloader
-from app.model.wide_resnet.load_model import model, device
+from app.model.nn.load_model import model, device
 from app.utils.imagenet_classes import superclasses
 
 
