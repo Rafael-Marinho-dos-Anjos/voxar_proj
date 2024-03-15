@@ -4,16 +4,20 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from torch import argmax
+
 from app.model.data.dataloader import get_dataloader
 from app.model.wide_resnet.load_model import model, device
 from app.utils.imagenet_classes import superclasses
 
 
 class VisualizationWindow(tk.Tk):
-    def __init__(self, path: str, screenName: str = None, baseName: str = None, className: str = "Tk", useTk: bool = True, sync: bool = False, use: str = None) -> None:
+    def __init__(self, path: str) -> None:
         """ Image visualization window
+
+        :param path: Images folder path
+        :type path: str
         """
-        super().__init__(screenName, baseName, className, useTk, sync, use)
+        super().__init__()
 
         self.resizable(False, False)
         self.geometry("250x300")

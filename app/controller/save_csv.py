@@ -3,12 +3,19 @@
 
 import csv
 from typing import Dict
+
 from app.utils.imagenet_classes import superclasses
 
 
 def save_csv(classifications: Dict, destination: str) -> None:
     """ Converts the classifications to the right format and stores it
-        into a cvs file
+        into a csv file
+
+    :param classifications: The collection of all names and predictions for each image in folder
+    :type classifications: Dict
+    :param destination: The path of folder where the csv file will be saved
+    :type destination: str
+    :return: None
     """
     # Generate a list converting classifications to format 'image_name; class'
     classification_list = [

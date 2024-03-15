@@ -2,16 +2,20 @@
 """
 
 from threading import Thread, Lock
+
 from tkinter import filedialog
 import tkinter as tk
+
 from app.controller.images_analyzer import do_predictions
 from app.controller.save_csv import save_csv
 from app.view.visualization_window import VisualizationWindow
 
 
-class MainWindow(tk.Tk):
-    def __init__(self, screenName: str = None, baseName: str = None, className: str = "Tk", useTk: bool = True, sync: bool = False, use: str = None) -> None:
-        super().__init__(screenName, baseName, className, useTk, sync, use)
+class MainWindow(tk.Tk):#verificar se todas as linhas estão com 79 ou 120
+    def __init__(self) -> None:
+        """ Main window application class
+        """
+        super().__init__()
         self.mutex = Lock()
 
         self.resizable(False, False)
@@ -67,6 +71,9 @@ class MainWindow(tk.Tk):
             self.output_path.set(folder)
     
     def start(self) -> None:
+        """ Start inference over every image in specified folder and save the answers
+        in a csv file
+        """
         folder_path = self.folder_path.get()
         output_path = self.output_path.get()
 
@@ -102,6 +109,9 @@ class MainWindow(tk.Tk):
         worker_thread.start()
 
     def generate_visualization(self):
+        """ Shows a new window with a drawn image from specified folder and its respective
+        prediction
+        """
         folder_path = self.folder_path.get()
         if folder_path in ["Please select folder", ""]:
             self.progress.set("Select the images folder before visualize a sample")

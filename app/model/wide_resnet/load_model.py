@@ -7,15 +7,19 @@
     accuracy but with a larger size.
 """
 
-from torchvision.models import wide_resnet50_2, Wide_ResNet50_2_Weights
+# Importing network model and weights making assignment for more
+# facilities to test several different architectures avaliable
+# in PyTorch
 import torch
+from torchvision.models import wide_resnet50_2 as net
+from torchvision.models import Wide_ResNet50_2_Weights as Weights
 
 
 # Asserting if cuda is avaliable (for performance improvement)
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 # Get inference Transforms
-transforms = Wide_ResNet50_2_Weights.DEFAULT.transforms()
+transforms = Weights.DEFAULT.transforms()
 
 # Instanciating pretrained model
-model = wide_resnet50_2(weights=Wide_ResNet50_2_Weights.IMAGENET1K_V2).to(device)
+model = net(weights=Weights.IMAGENET1K_V2).to(device)

@@ -13,6 +13,17 @@ def get_dataloader(
         transforms=transforms
     ) -> DataLoader:
     """ Returns the dataloader object for loading images from given folder
+
+    :param im_folder: Images folder path
+    :type im_folder: str
+    :param batch_size: The number of images readed every classification loop
+    :type batch_size: int
+    :param shuffle: If the batch returned every loop is a random choice
+    :type shuffle: bool
+    :param transforms: Image preprocessing steps
+    :type transforms: torch.nn.Sequential
+    :returns loader: Loading images and names object
+    :rtype: torch.utils.data.DataLoader
     """
     dataset = CustomDataset(im_folder, transforms)
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)

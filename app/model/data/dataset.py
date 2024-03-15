@@ -1,14 +1,22 @@
 """ Dataset module to load images
 """
-
+#conferir a ordem dos imports e ajustar os locos, tmabem melhoras as docstriungs de descrição
 from os import listdir
 from typing import Any
+
 from torch.utils.data import Dataset
 from torchvision.io import read_image
 
 
 class CustomDataset(Dataset):
     def __init__(self, path, transform=None) -> None:
+        """ Class for get image and file name
+
+        :param path: Images folder path
+        :type path: str
+        :param transform: Image preprocessing steps
+        :type transform: torch.nn.Sequential
+        """
         super().__init__()
         self.path = path
         self.image_names = listdir(path)
