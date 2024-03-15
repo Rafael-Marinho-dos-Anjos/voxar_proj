@@ -44,7 +44,7 @@ The project pipeline was organized seeking the priority order bellow:
 In this step were created the Dataset and DataLoader classes to access image files from folder directly to torch tensor type
 
 ### Model selection
-In this step several neural networks pretrained with ImageNet avaliable in PyTorch were tested and evaluated precision and performance to choose the bets for this application purpose
+In this step several neural networks pretrained with ImageNet avaliable in PyTorch were tested and evaluated precision and performance to choose the bets for this application purpose. Many neural networks were evaluated (ResNet, Wide-ResNet, EfficientNet, RegNet, Vit and Swin, each one with different variations) and the Swin_V2_S was the chosen one because showed the best tests results.
 
 ### Information post processing
 After the model classification is necessary to convert the output tensor to the class prediction, for this were created a superclasses list with all animals species (not races). With the classification label and image file name, is necessary to concatenate the strings to the required format
