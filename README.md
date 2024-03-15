@@ -19,3 +19,6 @@ This software is a easy way to classify animal images in a entire folder, saving
 - Before clicking to start (third button) is necessary to select the folders by clicking on the other two previous buttons (in any order), otherwise will be shown a message error
 - If the folders are selected properly, by clicking on Start the software will execute the classification and generates the file 'classifications.csv' in specified path automatically
 - Before clicking in Generate Random Visualization (fourth button) is necessary to select at least the images folder, otherwise a message error is shown. If the button is clicked when the images folder is already selected, a drawn image wil be showed in a new window with its classification
+
+## Warnings
+- Running software for the first time can be a little time consuming depending on your internet connection quality due to the neural network weights download. For later software uses, the Python stores weights in cache to avoid downloading again
