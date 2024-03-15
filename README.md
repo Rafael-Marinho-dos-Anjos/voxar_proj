@@ -10,6 +10,7 @@ This software is a easy way to classify animal images in a entire folder, saving
 
 ## How to use
 - To execute the software in windows just open the file 'launch.bat' located in root folder or run the file 'main.py' with Python in command prompt 'python .\main.py'
-- There are three buttons on main screen application: the first one (Select images folder) opens a new window to select the folder with images to be classified, the seccond (Select output location) opens a new window to select the folder where will be saved the csv file and the last (Start) executes the classification
+- There are four buttons on main screen application: the first one (Select images folder) opens a new window to select the folder with images to be classified, the seccond (Select output location) opens a new window to select the folder where will be saved the csv file, the third (Start) executes the classification and the last (Generate Random Visualization) will draw randomly an image to classify and show it in a new window
 - Before clicking to start (third button) is necessary to select the folders by clicking on the other two previous buttons (in any order), otherwise will be shown a message error
 - If the folders are selected properly, by clicking on Start the software will execute the classification and generates the file 'classifications.csv' in specified path automatically
+- Before clicking in Generate Random Visualization (fourth button) is necessary to select at least the images folder, otherwise a message error is shown. If the button is clicked when the images folder is already selected, a drawn image wil be showed in a new window with your classification

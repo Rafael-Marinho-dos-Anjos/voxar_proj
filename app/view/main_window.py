@@ -6,6 +6,7 @@ from tkinter import filedialog
 import tkinter as tk
 from app.controller.images_analyzer import do_predictions
 from app.controller.save_csv import save_csv
+from app.view.visualization_window import VisualizationWindow
 
 
 class MainWindow(tk.Tk):
@@ -16,6 +17,7 @@ class MainWindow(tk.Tk):
         self.resizable(False, False)
         self.geometry("400x250")
         self.title("Voxar Classification Project")
+        self.visualization = None
 
         self.create_widgets()
         self.place_widgets()
@@ -34,6 +36,8 @@ class MainWindow(tk.Tk):
         self.bt_start = tk.Button(master=self, text="Start", command=self.start)
         self.lb_progress = tk.Label(master=self, textvariable=self.progress)
 
+        self.bt_visualize = tk.Button(master=self, text="Generate random\nvisualization", command=self.generate_visualization)
+
     def place_widgets(self) -> None:
         self.bt_select_folder.place(relx=0.5, rely=0.1, anchor='center')
         self.lb_folder.place(relx=0.5, rely=0.2, anchor='center')
@@ -41,8 +45,10 @@ class MainWindow(tk.Tk):
         self.bt_select_output.place(relx=0.5, rely=0.4, anchor='center')
         self.lb_output.place(relx=0.5, rely=0.5, anchor='center')
 
-        self.bt_start.place(relx=0.5, rely=0.8, anchor='center')
+        self.bt_start.place(relx=0.3, rely=0.8, anchor='center')
         self.lb_progress.place(relx=0.5, rely=0.9, anchor='center')
+
+        self.bt_visualize.place(relx=0.7, rely=0.77, anchor='center')
 
     def select_folder(self) -> None:
         """ Select the folder where are stored the images
@@ -63,7 +69,7 @@ class MainWindow(tk.Tk):
         output_path = self.output_path.get()
 
         # If images folder or output folder are not selected, warn the user
-        if folder_path == "Please select folder" or output_path == "Please select folder":
+        if folder_path in ["Please select folder", ""] or output_path in ["Please select folder", ""]:
             self.progress.set("Select all folders before start")
             return
         
@@ -90,3 +96,14 @@ class MainWindow(tk.Tk):
         # Running the classification in a worker thread to avoid freezing the application window
         worker_thread = Thread(target=__start_classification, args=[self.progress])
         worker_thread.start()
+
+    def generate_visualization(self):
+        folder_path = self.folder_path.get()
+        if folder_path in ["Please select folder", ""]:
+            self.progress.set("Select the images folder before visualize a sample")
+            return
+        # Destroy visualization window if already have one opened
+        if self.visualization:
+            self.visualization.destroy()
+        
+        self.visualization = VisualizationWindow(self.folder_path.get())
