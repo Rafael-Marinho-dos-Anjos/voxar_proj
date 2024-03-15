@@ -28,3 +28,32 @@ This software is a easy way to classify animal images in a entire folder, saving
 
 ### Warnings
 - Running software for the first time can be a little time consuming depending on your internet connection quality due to the neural network weights download. For later software uses, the Python stores weights in cache to avoid downloading again
+
+## Developement pipeline
+
+The project pipeline was organized seeking the priority order bellow:
+
+1. Reading and preprocessing files
+2. Model selection
+3. Information post processing
+4. Saving informations to a file
+5. Application front-end and files navigator
+6. Easy results visualization
+
+### Reading and preprocessing files
+In this step were created the Dataset and DataLoader classes to access image files from folder directly to torch tensor type
+
+### Model selection
+In this step several neural networks pretrained with ImageNet avaliable in PyTorch were tested and evaluated precision and performance to choose the bets for this application purpose
+
+### Information post processing
+After the model classification is necessary to convert the output tensor to the class prediction, for this were created a superclasses list with all animals species (not races). With the classification label and image file name, is necessary to concatenate the strings to the required format
+
+### Saving informations to a file
+With the information in correct format, the application must save it into a external cvs file
+
+### Application front-end and files navigator
+Construct a window for any user manipulate the software easily
+
+### Easy results visualization
+Introduce in application a easy way to visualize the results without the need to read csv file
