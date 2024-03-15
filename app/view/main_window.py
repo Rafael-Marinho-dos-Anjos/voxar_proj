@@ -53,16 +53,18 @@ class MainWindow(tk.Tk):
     def select_folder(self) -> None:
         """ Select the folder where are stored the images
         """
-        folder = filedialog.askdirectory()
-        self.folder_path.set(folder)
         self.progress.set("")
+        folder = filedialog.askdirectory()
+        if folder:
+            self.folder_path.set(folder)
         
     def select_output(self) -> None:
         """ Select the folder where will be stored the csv file
         """
-        folder = filedialog.askdirectory()
-        self.output_path.set(folder)
         self.progress.set("")
+        folder = filedialog.askdirectory()
+        if folder:
+            self.output_path.set(folder)
     
     def start(self) -> None:
         folder_path = self.folder_path.get()
@@ -75,9 +77,10 @@ class MainWindow(tk.Tk):
         
         def __start_classification(progress_var) -> None:
             # Disable all buttons while program makes the predictions
+            self.bt_start["state"] = "disabled"
+            self.bt_visualize["state"] = "disabled"
             self.bt_select_folder["state"] = "disabled"
             self.bt_select_output["state"] = "disabled"
-            self.bt_start["state"] = "disabled"
 
             # Predict classes for each image in folder
             progress_var.set("Doing classification for each image in folder...")
@@ -89,9 +92,10 @@ class MainWindow(tk.Tk):
             progress_var.set("Done!")
 
             # Enable again all buttons
+            self.bt_start["state"] = "normal"
+            self.bt_visualize["state"] = "normal"
             self.bt_select_folder["state"] = "normal"
             self.bt_select_output["state"] = "normal"
-            self.bt_start["state"] = "normal"
         
         # Running the classification in a worker thread to avoid freezing the application window
         worker_thread = Thread(target=__start_classification, args=[self.progress])
